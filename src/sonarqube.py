@@ -28,7 +28,7 @@ class SonarQubeClient:
         return self._request(endpoint="api/components/search?qualifiers=TRK&p={}&ps={}".format(page_index, page_size))
 
     def get_metrics(self):
-        return self._request(endpoint="api/metrics/search")
+        return self._request(endpoint="api/metrics/search?ps=500")
 
     def get_measures(self, component_key, metric_key):
         return self._request(endpoint="api/measures/component?component={}&metricKeys={}".format(component_key, metric_key))
