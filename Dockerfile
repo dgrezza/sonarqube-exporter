@@ -1,4 +1,4 @@
-FROM nthienan/python:3.6.6-alpine3.8-onbuild as builder
+FROM nthienan/python:3.6.6-alpine3.8-onbuild AS builder
 
 RUN python setup.py clean bdist_wheel
 
@@ -22,5 +22,6 @@ RUN pip install --no-cache-dir sqe*.whl && \
     rm -f sqe*.whl
 
 COPY ./entrypoint.sh /usr/app/src/entrypoint.sh
+RUN chmod 777 /usr/app/src/entrypoint.sh
 
 ENTRYPOINT ["/usr/app/src/entrypoint.sh"]
